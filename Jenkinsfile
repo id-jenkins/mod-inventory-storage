@@ -111,9 +111,6 @@ pipeline {
       }
    }  
 
-
-    /* GitHubNotify authentication appears to be broken. 
-       https://issues.jenkins-ci.org/browse/JENKINS-43370 */
    post { 
       success { 
          // githubNotify description: 'Build successful', status: 'SUCCESS'
