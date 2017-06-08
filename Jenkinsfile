@@ -109,7 +109,7 @@ pipeline {
             sh "docker rmi ${docker_image}:latest"
          }
       }
-   }  // end Stages
+   }  
 
 
     /* GitHubNotify authentication appears to be broken. 
@@ -126,7 +126,7 @@ pipeline {
 
          slackSend color: '#FF0000',message: '"Build successful: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"'
       }
-   }  // end Post
+   }  
 
-} // end pipeline 
+}
      
