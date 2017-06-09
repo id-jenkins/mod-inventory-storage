@@ -105,7 +105,7 @@ pipeline {
                                 ignoreAttachments: false),
                                 artifactsPublisher(disabled: false)]) {
                echo 'Deploying java artifacts to Maven'
-               sh 'mvn deploy:deploy'
+               sh 'mvn -DskipTests -DdeployAtEnd=true deploy'
             }
          }
       }
