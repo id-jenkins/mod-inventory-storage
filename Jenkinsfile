@@ -110,22 +110,6 @@ pipeline {
          }
       }
 
-      stage('Deploy to Maven Repo') {
-         when {
-            branch 'master'
-         }
-         steps {
-            withMaven(jdk: 'OpenJDK 8 on Ubuntu Docker Slave Node',
-                      maven: 'Maven on Ubuntu Docker Slave Node',
-                      options: [junitPublisher(disabled: false,
-                                ignoreAttachments: false),
-                                artifactsPublisher(disabled: false)]) {
-               echo 'Deploying java artifacts to Maven'
-               sh 'mvn deploy:deploy'
-            }
-         }
-      }
-
       stage('Clean Up') {
          steps {
             sh "docker rmi ${docker_image}:${env.POM_VERSION}-${env.BUILD_NUMBER}"
