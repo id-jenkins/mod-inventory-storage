@@ -18,7 +18,7 @@ pipeline {
                currentBuild.displayName = "#${env.BUILD_NUMBER}-${env.JOB_BASE_NAME}"
             }
 
-            slackSend '"Build started: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"'
+            slackSend "Build started: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
             step([$class: 'WsCleanup'])
          }
       }
@@ -120,15 +120,13 @@ pipeline {
 
    post { 
       success { 
-         // githubNotify description: 'Build successful', status: 'SUCCESS'
 
-         slackSend color: '#008000', message: '"Build failed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"'
+         slackSend color: '#008000', message: "Build failed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
       }
 
       failure {
-         // githubNotify description: 'Build failed', status: 'FAILURE'
 
-         slackSend color: '#FF0000',message: '"Build successful: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"'
+         slackSend color: '#FF0000',message: "Build successful: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
       }
    }  
 
