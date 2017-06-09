@@ -121,12 +121,12 @@ pipeline {
    post { 
       failure { 
 
-         slackSend(color: '#FF0000',message: "Build failed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+         slackSend(color:'#FF0000', message: "Build failed: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
       }
 
       success {
 
-         slackSend (color: '#008000',message: "Build successful: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+         slackSend(color:'#008000', message: "Build successful: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
       }
    }  
 
