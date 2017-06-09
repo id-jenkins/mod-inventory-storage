@@ -72,8 +72,10 @@ pipeline {
       } 
 
       stage('Test') {
-         echo 'Some kind of additional integration testing should be done here before'
-         echo 'artifacts are deployed in subsequent stages.'
+         steps {
+            echo 'Some kind of additional integration testing should be done here before'
+            echo 'artifacts are deployed in subsequent stages.'
+         }
       }
  
       stage('Deploy to Docker Repo') {
