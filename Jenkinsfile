@@ -85,13 +85,8 @@ pipeline {
             script {
                docker.withRegistry('https://index.docker.io/v1/', 'DockerHubIDJenkins') {
                   def dockerImage =  docker.image("${env.docker_image}:${env.POM_VERSION}-${env.BUILD_NUMBER}")
-<<<<<<< HEAD
                   // dockerImage.push()
                   // dockerImage.push('latest')
-=======
-                  dockerImage.push()
-                  dockerImage.push('latest')
->>>>>>> 8a9f80a66aae525ee485f12fd84fa4659cedc694
                }
             }
          }
