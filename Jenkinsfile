@@ -85,9 +85,30 @@ pipeline {
             script {
                docker.withRegistry('https://index.docker.io/v1/', 'DockerHubIDJenkins') {
                   def dockerImage =  docker.image("${env.docker_image}:${env.POM_VERSION}-${env.BUILD_NUMBER}")
+<<<<<<< HEAD
                   // dockerImage.push()
                   // dockerImage.push('latest')
+=======
+                  dockerImage.push()
+                  dockerImage.push('latest')
+>>>>>>> 8a9f80a66aae525ee485f12fd84fa4659cedc694
                }
+            }
+         }
+      }
+   
+      stage('Deploy to Maven Repo') {
+         when {
+            branch 'master'
+         }
+         steps {
+            withMaven(jdk: 'OpenJDK 8 on Ubuntu Docker Slave Node',
+                      maven: 'Maven on Ubuntu Docker Slave Node',
+                      options: [junitPublisher(disabled: false,
+                                ignoreAttachments: false),
+                                artifactsPublisher(disabled: false)]) {
+               echo 'Deploying java artifacts to Maven'
+               sh 'mvn deploy:deploy'
             }
          }
       }
